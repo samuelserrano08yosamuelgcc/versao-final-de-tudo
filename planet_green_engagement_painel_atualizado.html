@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Site educativo sobre meio ambiente, biodiversidade, sustentabilidade e preservação da natureza.">
+<title>PLANETA VIVO | Meio Ambiente</title>
+<style>
+:root{--bg:#071811;--panel:#10271c;--panel2:#173525;--green:#80e27e;--lime:#c5f36b;--blue:#76d9ee;--text:#f4fff4;--muted:#b7cdbb;--line:#31533c}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 12% 5%,#1b4a2b 0,transparent 34%),radial-gradient(ellipse at 90% 28%,#123d43 0,transparent 30%),var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.65;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;background-image:radial-gradient(#d4ffd0 1px,transparent 1px);background-size:35px 35px;animation:stars 40s linear infinite;z-index:-1}
+@keyframes stars{to{background-position:180px 220px}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
+@keyframes glow{0%,100%{text-shadow:0 0 12px #80e27e44}50%{text-shadow:0 0 28px #80e27ecc,0 0 42px #76d9ee44}}
+@keyframes enter{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+header{position:sticky;top:0;z-index:20;background:#071811ed;border-bottom:1px solid #ffffff18;backdrop-filter:blur(14px)}
+.nav{max-width:1200px;margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-weight:900;letter-spacing:1.4px;color:var(--lime);text-decoration:none;font-size:1.1rem;white-space:nowrap}
+nav{display:flex;gap:5px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+nav a{color:var(--muted);text-decoration:none;font-size:.87rem;padding:8px 10px;border-radius:9px;transition:.25s}
+nav a:hover,nav a.active{color:var(--lime);background:#c5f36b12;transform:translateY(-2px)}
+.menu-btn{display:none;border:1px solid var(--line);background:var(--panel);color:white;padding:8px 12px;border-radius:9px;font-size:1.1rem}
+.hero{min-height:76vh;display:grid;place-items:center;text-align:center;padding:90px 22px 70px;position:relative}
+.hero-inner{max-width:900px;animation:enter .9s ease both}
+.eyebrow{display:inline-block;border:1px solid #c5f36b66;background:#c5f36b10;color:var(--lime);border-radius:999px;padding:6px 14px;font-size:.78rem;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(2.8rem,8vw,6.1rem);line-height:.98;margin:22px 0;color:#fff;letter-spacing:-3px;animation:glow 4s ease-in-out infinite}
+h1 span{color:var(--lime)}
+.hero p{max-width:730px;margin:0 auto;color:var(--muted);font-size:1.1rem}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-block;padding:12px 19px;border-radius:12px;text-decoration:none;font-weight:800;transition:.25s;border:1px solid var(--lime);color:#10200e;background:var(--lime);cursor:pointer;font:inherit;font-weight:800}
+.btn.secondary{background:transparent;color:var(--text);border-color:var(--line)}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px #0005}
+.hero-orb{position:absolute;width:190px;height:190px;border-radius:50%;border:1px solid #80e27e55;right:8%;top:20%;animation:float 6s ease-in-out infinite;box-shadow:inset 0 0 50px #80e27e0b,0 0 50px #80e27e0b;pointer-events:none}
+.hero-orb:after{content:"🌎";position:absolute;inset:0;display:grid;place-items:center;font-size:6rem;filter:drop-shadow(0 0 20px #80e27e66)}
+section{padding:76px 22px;scroll-margin-top:78px}
+.container{max-width:1120px;margin:auto}
+.section-head{max-width:760px;margin:0 auto 34px;text-align:center}
+.kicker{color:var(--blue);font-size:.78rem;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+h2{font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;margin:10px 0 14px}
+.section-head p,.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.card{background:linear-gradient(145deg,#173525ee,#0c2117ee);border:1px solid var(--line);padding:23px;border-radius:18px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
+.card:before{content:"";position:absolute;top:0;left:-120%;width:70%;height:1px;background:linear-gradient(90deg,transparent,var(--lime),transparent);transition:left .6s}
+.card:hover{transform:translateY(-7px);border-color:#c5f36b99;box-shadow:0 18px 38px #0004}
+.card:hover:before{left:130%}
+.card .emoji{font-size:2.2rem;display:inline-block;margin-bottom:8px;filter:drop-shadow(0 0 10px #80e27e33)}
+.card h3{margin:5px 0 8px;font-size:1.2rem}
+.card p{margin:0;color:var(--muted);font-size:.94rem}
+.pill{display:inline-block;border:1px solid #80e27e55;background:#80e27e0d;color:var(--green);border-radius:999px;padding:3px 9px;font-size:.72rem;margin:10px 5px 0 0}
+.feature-band{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;background:linear-gradient(120deg,#183b28,#10383a);border:1px solid var(--line);border-radius:24px;padding:32px}
+.feature-band .big-emoji{font-size:8rem;text-align:center;animation:float 5s ease-in-out infinite;filter:drop-shadow(0 0 25px #80e27e44)}
+ul.clean{padding-left:20px;color:var(--muted)}
+ul.clean li{margin:8px 0}
+.searchbar{display:flex;gap:10px;max-width:500px;margin:0 auto 24px}
+.searchbar input,.form input,.form select,.form textarea{width:100%;background:#081b12;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px 13px;font:inherit;outline:none}
+.searchbar input:focus,.form input:focus,.form textarea:focus,.form select:focus{border-color:var(--green);box-shadow:0 0 0 3px #80e27e14}
+.no-results{display:none;text-align:center;color:var(--muted);padding:20px}
+.timeline{max-width:800px;margin:auto;position:relative}
+.timeline:before{content:"";position:absolute;left:21px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--lime),var(--blue),transparent)}
+.event{position:relative;padding:0 0 26px 60px}
+.event:before{content:"";position:absolute;left:13px;top:5px;width:18px;height:18px;border-radius:50%;background:var(--lime);box-shadow:0 0 20px #c5f36b88}
+.year{color:var(--lime);font-weight:900;font-size:1.15rem}
+.event p{color:var(--muted);margin:4px 0}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.stat{border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center;background:#10271caa}
+.stat strong{display:block;color:var(--lime);font-size:1.8rem}
+.stat span{color:var(--muted);font-size:.88rem}
+.form{display:grid;gap:13px;max-width:650px;margin:auto}
+.form label{font-size:.9rem;color:var(--muted);display:grid;gap:6px}
+.form textarea{min-height:120px;resize:vertical}
+.notice{margin-top:12px;color:var(--lime);text-align:center;min-height:24px}
+footer{border-top:1px solid #ffffff18;padding:28px 22px;text-align:center;color:var(--muted);font-size:.88rem}
+.backtop{position:fixed;right:18px;bottom:18px;z-index:10;background:var(--lime);color:#10200e;text-decoration:none;border-radius:50%;width:44px;height:44px;display:grid;place-items:center;font-size:1.25rem;box-shadow:0 5px 20px #0005}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-orb{right:2%;width:130px;height:130px}.hero-orb:after{font-size:4rem}nav{gap:2px}nav a{font-size:.8rem;padding:7px}}
+@media(max-width:700px){.menu-btn{display:block}nav{display:none;position:absolute;left:12px;right:12px;top:62px;background:#0b2015;border:1px solid var(--line);border-radius:14px;padding:12px;box-shadow:0 20px 40px #0008}nav.open{display:grid;grid-template-columns:1fr 1fr}nav a{padding:11px}.grid{grid-template-columns:1fr}.hero{min-height:68vh;padding-top:75px}.hero-orb{opacity:.22;top:8%;right:-20px}.feature-band{grid-template-columns:1fr;padding:24px}.feature-band .big-emoji{font-size:5rem}.section-head{text-align:left}.searchbar{flex-direction:column}.stat-grid{grid-template-columns:1fr}h1{letter-spacing:-1.5px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+
+/* NOVO PAINEL PLA.NET GREEN ENGAGEMENT */
+.admin-access{margin:18px auto 0;text-align:center}
+.admin-access button{background:transparent;color:var(--lime);border:1px solid var(--line);padding:9px 14px;border-radius:10px;cursor:pointer;font:inherit}
+.admin-access button:hover{background:#c5f36b14;border-color:var(--lime)}
+.admin-overlay{display:none;position:fixed;inset:0;z-index:100;background:#020a06ed;backdrop-filter:blur(10px);padding:12px;overflow:auto}
+.admin-overlay.open{display:block}
+.admin-login{max-width:380px;margin:15vh auto;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:25px}
+.admin-login input{width:100%;margin:12px 0;background:#081b12;color:white;border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit}
+.admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.admin-actions button,.admin-top button{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:9px 13px;border-radius:9px;cursor:pointer;font:inherit}
+.admin-dashboard{max-width:1450px;margin:12px auto;background:linear-gradient(135deg,#001b14,#00271d 55%,#001710);border:1px solid #167448;border-radius:18px;overflow:hidden;color:#f2fff7;min-height:85vh}
+.admin-dashboard *{box-sizing:border-box}
+.admin-dashboard .layout{display:flex;min-height:85vh}
+.admin-dashboard .sidebar{width:205px;flex-shrink:0;background:linear-gradient(180deg,#00251b,#001a14);border-right:1px solid #12623e;padding:22px 14px;display:flex;flex-direction:column}
+.admin-dashboard .brand{text-align:center;padding:5px 0 28px}
+.admin-dashboard .brand-icon{font-size:42px}
+.admin-dashboard .brand h2{font-size:19px;margin:5px 0}
+.admin-dashboard .brand p{color:#9af47a;margin:0;font-size:13px}
+.admin-dashboard .side-nav{display:grid;gap:8px}
+.admin-dashboard .side-nav a{color:#eafff2;text-decoration:none;padding:12px;border-radius:13px;display:flex;gap:12px;align-items:center;font-size:14px}
+.admin-dashboard .side-nav a:hover,.admin-dashboard .side-nav a.active{background:linear-gradient(90deg,#176b39,#1c7538)}
+.admin-dashboard .side-quote{margin-top:auto;text-align:center;color:#9af47a;font-style:italic;font-size:14px;line-height:1.4;padding:25px 0 5px}
+.admin-dashboard main{width:min(1250px,calc(100% - 205px));margin:auto;padding:18px 24px 0}
+.admin-dashboard .topbar{display:flex;justify-content:flex-end;align-items:center;min-height:52px}
+.admin-dashboard .admin-user{border:1px solid #267d4b;border-radius:25px;padding:9px 16px;background:#002a20;display:flex;gap:12px;align-items:center;font-size:13px}
+.admin-dashboard .hero{padding:12px 12px 25px;min-height:140px}
+.admin-dashboard .hero .sprout{font-size:32px;color:#9af47a}
+.admin-dashboard .hero h1{font-size:clamp(27px,4vw,43px);margin:0 0 8px;letter-spacing:-1px}
+.admin-dashboard .hero h1 span{color:#9af47a}
+.admin-dashboard .hero p{font-size:15px;line-height:1.4;margin:0;color:#d9eee2}
+.admin-dashboard .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:18px}
+.admin-dashboard .panel{background:linear-gradient(135deg,rgba(6,48,35,.96),rgba(0,32,24,.95));border:1.5px solid #23854e;border-radius:15px;box-shadow:0 8px 25px #0003}
+.admin-dashboard .stat{padding:15px;min-height:135px;position:relative;overflow:hidden}
+.admin-dashboard .circle{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#00321d;background:#7cf58a;font-size:21px;margin-bottom:7px}
+.admin-dashboard .circle.blue{background:#46dff0}.admin-dashboard .circle.yellow{background:#d8ff70}
+.admin-dashboard .stat strong{display:block;font-size:25px;margin:0 0 2px}
+.admin-dashboard .stat .stat-title{font-size:14px}
+.admin-dashboard .stat small{display:block;color:#b7cfc3;margin-top:9px;font-size:11px}
+.admin-dashboard .charts{display:grid;grid-template-columns:1fr 1.08fr;gap:14px;margin-bottom:16px}
+.admin-dashboard .chart{padding:15px;min-height:220px}
+.admin-dashboard .chart h3{font-size:16px;margin:0 0 18px}
+.admin-dashboard .bar-row{display:grid;grid-template-columns:115px 1fr 22px;gap:10px;align-items:center;margin:12px 0;font-size:12px}
+.admin-dashboard .track{height:12px;border-radius:20px;background:#124c3c;overflow:hidden}
+.admin-dashboard .fill{height:100%;border-radius:20px;background:linear-gradient(90deg,#8cf18b,#e0ff82)}
+.admin-dashboard .bar-row b,.admin-dashboard .chart-number{color:#d9ff75;text-align:right;font-weight:bold}.admin-dashboard .bar-label{overflow-wrap:anywhere}
+.admin-dashboard .chart-note{font-size:11px;color:#b7cfc3;margin-top:20px}
+.admin-dashboard .tools{display:flex;gap:10px;margin:15px 0;align-items:center;flex-wrap:wrap}
+.admin-dashboard .search{flex:1;display:flex;align-items:center;gap:10px;background:#063328;border:1px solid #176c46;border-radius:12px;padding:0 12px;min-height:45px}
+.admin-dashboard .search input{width:100%;border:0;outline:0;background:transparent;color:white;padding:10px}
+.admin-dashboard .btn{border:1px solid #27864e;background:#073d2b;color:white;border-radius:10px;padding:11px 13px;font-weight:bold;cursor:pointer}
+.admin-dashboard .btn.export{background:#e5ffbb;color:#062819;border-color:#d7ff9d}
+.admin-dashboard .responses{display:grid;gap:10px;padding-bottom:18px}
+.admin-dashboard .response{padding:14px;display:grid;grid-template-columns:45px 1fr auto;gap:12px;position:relative;overflow:hidden}
+.admin-dashboard .avatar{width:42px;height:42px;border-radius:50%;background:#14552c;display:grid;place-items:center;font-size:22px}
+.admin-dashboard .response h3{color:#9af47a;margin:0 0 5px;font-size:16px}
+.admin-dashboard .response p{margin:3px 0;font-size:13px;line-height:1.35}
+.admin-dashboard .response small{color:#b7cfc3;font-size:11px}
+.admin-dashboard .response-actions{display:flex;gap:10px;align-items:flex-start;white-space:nowrap;font-size:11px}
+.admin-dashboard .delete-one{display:block;margin-top:8px;border:1px solid #79d65c;background:#073d27;color:#eaffd8;border-radius:9px;padding:7px 10px;font-size:11px;cursor:pointer}
+.admin-dashboard .empty{text-align:center;padding:25px;color:#b7cfc3}
+.admin-dashboard footer{margin:0;height:55px;background:linear-gradient(170deg,transparent 0 16%,#155c31 17%,#063c27 34%,#002219 35%);display:flex;align-items:end;justify-content:center;padding:0 10px 18px;color:#cde5d5;font-size:10px}
+@media(max-width:950px){.admin-dashboard .stats{grid-template-columns:repeat(2,1fr)}.admin-dashboard .charts{grid-template-columns:1fr}.admin-dashboard .sidebar{width:170px}.admin-dashboard main{width:calc(100% - 170px);padding:14px}}
+@media(max-width:650px){.admin-dashboard .layout{display:block}.admin-dashboard .sidebar{width:100%;padding:10px}.admin-dashboard .brand{padding:2px 0 10px}.admin-dashboard .brand-icon{font-size:28px;display:inline}.admin-dashboard .brand h2{display:inline-block;margin:0 5px}.admin-dashboard .brand p{display:inline-block}.admin-dashboard .side-nav{display:flex;overflow-x:auto;gap:5px}.admin-dashboard .side-nav a{padding:8px 10px;white-space:nowrap}.admin-dashboard .side-quote{display:none}.admin-dashboard main{width:100%;padding:10px}.admin-dashboard .hero{padding:10px 3px 17px}.admin-dashboard .stats{gap:8px}.admin-dashboard .stat{padding:11px;min-height:125px}.admin-dashboard .stat strong{font-size:21px}.admin-dashboard .charts{gap:9px}.admin-dashboard .bar-row{grid-template-columns:95px 1fr 18px;gap:6px;font-size:11px}.admin-dashboard .tools{flex-wrap:wrap}.admin-dashboard .search{flex-basis:100%}.admin-dashboard .tools .btn{flex:1;padding:10px 7px;font-size:11px}.admin-dashboard .response{grid-template-columns:38px 1fr}.admin-dashboard .avatar{width:36px;height:36px}.admin-dashboard .response-actions{grid-column:2;justify-content:space-between}.admin-dashboard footer{margin:0}}
+</style>
+</head>
+<body>
+<header>
+ <div class="nav">
+  <a class="logo" href="#inicio">🌿 PLANETA VIVO</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+  <nav id="navLinks" aria-label="Navegação principal">
+   <a href="#sobre">Sobre</a><a href="#biomas">Biomas</a><a href="#problemas">Problemas</a><a href="#solucoes">Soluções</a><a href="#acoes">Ações</a><a href="#linha-do-tempo">Futuro</a><a href="#contato">Contato</a>
+  </nav>
+ </div>
+</header>
+<main>
+<section class="hero" id="inicio">
+ <div class="hero-orb" aria-hidden="true"></div>
+ <div class="hero-inner">
+  <span class="eyebrow">Conhecer • Cuidar • Preservar</span>
+  <h1>UM PLANETA.<br><span>MILHÕES</span> DE VIDAS.</h1>
+  <p>A natureza sustenta a vida na Terra. Conheça os ecossistemas, entenda os desafios ambientais e descubra atitudes que ajudam a construir um futuro mais sustentável.</p>
+  <div class="actions"><a class="btn" href="#solucoes">🌱 Como ajudar</a><a class="btn secondary" href="#sobre">Explorar o tema ↓</a></div>
+ </div>
+</section>
+
+<section id="sobre">
+ <div class="container">
+  <div class="section-head reveal"><span class="kicker">Nosso lar em comum</span><h2>🌎 O que é o meio ambiente?</h2><p>Meio ambiente é o conjunto de elementos naturais e sociais que nos cercam: ar, água, solo, plantas, animais e as relações entre todos os seres vivos. Cuidar dele é essencial para a saúde, a biodiversidade e a qualidade de vida das gerações atuais e futuras.</p></div>
+  <div class="feature-band reveal">
+   <div><h3>O equilíbrio depende de todos</h3><p class="muted">Os ecossistemas funcionam por meio de relações entre organismos e ambiente. Quando a água é poluída, uma floresta é destruída ou o clima muda rapidamente, essas relações podem ser afetadas.</p>
+    <ul class="clean"><li>Preservar habitats protege espécies.</li><li>Economizar água e energia reduz desperdícios.</li><li>Consumir com responsabilidade diminui a pressão sobre os recursos naturais.</li><li>Educação ambiental ajuda a transformar hábitos e decisões coletivas.</li></ul>
+   </div><div class="big-emoji" aria-hidden="true">🌳</div>
+  </div>
+  <div class="stat-grid reveal">
+   <div class="stat"><strong>🌿</strong><span>Biodiversidade: variedade de vida</span></div>
+   <div class="stat"><strong>💧</strong><span>Água limpa é essencial para a vida</span></div>
+   <div class="stat"><strong>♻️</strong><span>Recursos devem ser usados com responsabilidade</span></div>
+  </div>
+ </div>
+</section>
+
+<section id="biomas">
+ <div class="container">
+  <div class="section-head reveal"><span class="kicker">Diversidade natural</span><h2>🗺️ Biomas do Brasil</h2><p>O Brasil reúne diferentes biomas, cada um com clima, vegetação, animais e desafios de conservação próprios.</p></div>
+  <div class="grid">
+   <article class="card reveal"><div class="emoji">🌳</div><h3>Amazônia</h3><p>Grande floresta tropical, rica em espécies e importante para os ciclos da água e do carbono.</p><span class="pill">Floresta tropical</span></article>
+   <article class="card reveal"><div class="emoji">🦜</div><h3>Cerrado</h3><p>Savana brasileira com árvores retorcidas, campos, nascentes e muitas espécies adaptadas à estação seca.</p><span class="pill">Savana</span></article>
+   <article class="card reveal"><div class="emoji">🐆</div><h3>Pantanal</h3><p>Uma das maiores áreas úmidas continentais, marcada por cheias sazonais e rica fauna.</p><span class="pill">Área úmida</span></article>
+   <article class="card reveal"><div class="emoji">🌱</div><h3>Mata Atlântica</h3><p>Bioma muito diverso, presente em áreas densamente povoadas e bastante fragmentado pela ocupação humana.</p><span class="pill">Floresta tropical</span></article>
+   <article class="card reveal"><div class="emoji">🌵</div><h3>Caatinga</h3><p>Bioma exclusivamente brasileiro, com espécies adaptadas à escassez de água e ao clima semiárido.</p><span class="pill">Semiárido</span></article>
+   <article class="card reveal"><div class="emoji">🌾</div><h3>Pampa</h3><p>Campos naturais do sul do Brasil, com gramíneas, flores e fauna adaptada a paisagens abertas.</p><span class="pill">Campos</span></article>
+  </div>
+ </div>
+</section>
+
+<section id="problemas">
+ <div class="container">
+  <div class="section-head reveal"><span class="kicker">Desafios ambientais</span><h2>⚠️ O que ameaça a natureza?</h2><p>As atividades humanas podem causar impactos quando não respeitam os limites dos ecossistemas. Conhecer os problemas é o primeiro passo para enfrentá-los.</p></div>
+  <div class="grid">
+   <article class="card reveal"><div class="emoji">🪓</div><h3>Desmatamento</h3><p>A retirada da vegetação destrói habitats, afeta o solo e altera os ciclos da água e do carbono.</p></article>
+   <article class="card reveal"><div class="emoji">🏭</div><h3>Poluição</h3><p>Resíduos e substâncias poluentes podem contaminar o ar, os rios, os oceanos e o solo.</p></article>
+   <article class="card reveal"><div class="emoji">🌡️</div><h3>Mudanças climáticas</h3><p>O aumento dos gases de efeito estufa causado por atividades humanas aquece o planeta e intensifica riscos climáticos.</p></article>
+   <article class="card reveal"><div class="emoji">🐝</div><h3>Perda de biodiversidade</h3><p>A destruição de habitats, a poluição e outras pressões colocam espécies e ecossistemas em risco.</p></article>
+   <article class="card reveal"><div class="emoji">🛍️</div><h3>Consumo excessivo</h3><p>O desperdício aumenta a extração de recursos e a quantidade de resíduos produzidos.</p></article>
+   <article class="card reveal"><div class="emoji">🔥</div><h3>Queimadas e incêndios</h3><p>Fogo fora de controle pode destruir vegetação, matar animais e prejudicar a qualidade do ar.</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="solucoes">
+ <div class="container">
+  <div class="section-head reveal"><span class="kicker">Atitudes que fazem diferença</span><h2>♻️ Como podemos ajudar?</h2><p>Pequenas mudanças, quando adotadas por muitas pessoas e apoiadas por políticas e empresas responsáveis, podem contribuir para resultados positivos.</p></div>
+  <div class="grid">
+   <article class="card reveal"><div class="emoji">🚰</div><h3>Economize água</h3><p>Feche a torneira quando não estiver usando, tome banhos conscientes e avise sobre vazamentos.</p></article>
+   <article class="card reveal"><div class="emoji">💡</div><h3>Use energia com consciência</h3><p>Apague luzes desnecessárias e desligue aparelhos que não estão em uso.</p></article>
+   <article class="card reveal"><div class="emoji">♻️</div><h3>Reduza e recicle</h3><p>Evite descartáveis quando possível, reutilize materiais e separe resíduos conforme a coleta local.</p></article>
+   <article class="card reveal"><div class="emoji">🚌</div><h3>Escolha deslocamentos sustentáveis</h3><p>Quando for seguro e viável, caminhe, use bicicleta, transporte público ou compartilhe caronas.</p></article>
+   <article class="card reveal"><div class="emoji">🌱</div><h3>Cuide das áreas verdes</h3><p>Proteja árvores e jardins, plante espécies adequadas ao local e nunca solte espécies exóticas na natureza.</p></article>
+   <article class="card reveal"><div class="emoji">🧺</div><h3>Consuma melhor</h3><p>Planeje compras, evite desperdício de alimentos e prefira produtos duráveis quando possível.</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="acoes">
+ <div class="container">
+  <div class="section-head reveal"><span class="kicker">Saia da ideia para a prática</span><h2>🤝 Ações na escola e na comunidade</h2><p>Projetos coletivos ajudam a espalhar conhecimento e a cuidar dos espaços que todos compartilham.</p></div>
+  <div class="grid">
+   <article class="card reveal"><div class="emoji">🧹</div><h3>Mutirão de limpeza</h3><p>Organize uma ação com autorização e equipamentos adequados para recolher resíduos de um espaço público.</p></article>
+   <article class="card reveal"><div class="emoji">📚</div><h3>Campanha educativa</h3><p>Crie cartazes, vídeos ou apresentações sobre reciclagem, água, energia e proteção da fauna.</p></article>
+   <article class="card reveal"><div class="emoji">🌿</div><h3>Horta escolar</h3><p>Planeje uma horta com orientação, uso responsável da água e compostagem quando houver estrutura.</p></article>
+   <article class="card reveal"><div class="emoji">🗑️</div><h3>Coleta seletiva</h3><p>Verifique quais materiais são aceitos na sua região e sinalize corretamente os recipientes.</p></article>
+   <article class="card reveal"><div class="emoji">📋</div><h3>Mapa de desperdícios</h3><p>Observe luzes acesas sem necessidade, torneiras com vazamento e materiais descartados sem uso.</p></article>
+   <article class="card reveal"><div class="emoji">🌎</div><h3>Compartilhe informação</h3><p>Use fontes confiáveis, converse com respeito e incentive atitudes possíveis para diferentes realidades.</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="linha-do-tempo">
+ <div class="container">
+  <div class="section-head reveal"><span class="kicker">Construindo um futuro melhor</span><h2>📅 Consciência ambiental ao longo do tempo</h2><p>A proteção ambiental evolui com a ciência, a participação social e acordos entre países.</p></div>
+  <div class="timeline">
+   <div class="event reveal"><div class="year">1972</div><h3>Conferência de Estocolmo</h3><p>Uma conferência internacional importante para colocar questões ambientais no centro do debate global.</p></div>
+   <div class="event reveal"><div class="year">1992</div><h3>Rio-92</h3><p>A Conferência das Nações Unidas sobre Meio Ambiente e Desenvolvimento ocorreu no Rio de Janeiro.</p></div>
+   <div class="event reveal"><div class="year">2015</div><h3>Agenda 2030</h3><p>Países adotaram os Objetivos de Desenvolvimento Sustentável, que incluem água, energia, cidades e clima.</p></div>
+   <div class="event reveal"><div class="year">Todos os dias</div><h3>Responsabilidade compartilhada</h3><p>Governos, empresas, comunidades e indivíduos têm papéis diferentes e complementares na proteção ambiental.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="contato">
+ <div class="container">
+  <div class="section-head reveal"><span class="kicker">Sua voz importa</span><h2>✉️ Envie uma sugestão</h2><p>Conte qual tema ambiental você gostaria de ver em uma próxima versão do site.</p></div>
+  <form class="form reveal" id="feedbackForm">
+   <label>Nome (opcional)<input name="nome" type="text" placeholder="Seu nome"></label>
+   <label>Assunto
+    <select name="assunto" required><option value="">Selecione um tema</option><option>Reciclagem</option><option>Água e energia</option><option>Biomas brasileiros</option><option>Animais e biodiversidade</option><option>Mudanças climáticas</option><option>Projeto escolar</option></select>
+   </label>
+   <label>Mensagem<textarea name="mensagem" required placeholder="Escreva sua ideia ou sugestão..."></textarea></label>
+   <button class="btn" type="submit">Enviar sugestão</button>
+   <div class="notice" id="formNotice" role="status" aria-live="polite"></div>
+   <p class="muted" style="font-size:.82rem">Este formulário é demonstrativo: não envia nem armazena dados em um servidor.</p>
+  </form>
+ </div>
+</section>
+</main>
+
+<div class="admin-access">
+ <button type="button" id="openAdmin">🔐 Área administrativa</button>
+</div>
+
+<div class="admin-overlay" id="adminOverlay" aria-hidden="true">
+ <div class="admin-login" id="adminLogin">
+  <h2>🔐 Acesso administrativo</h2>
+  <p class="muted">Digite a senha para visualizar as respostas.</p>
+  <input type="password" id="adminPassword" placeholder="Senha administrativa" autocomplete="current-password">
+  <div class="admin-actions">
+   <button class="btn" type="button" id="loginAdmin">Entrar</button>
+   <button type="button" id="cancelAdmin">Cancelar</button>
+  </div>
+  <p class="notice" id="loginNotice" role="status"></p>
+  <small class="muted">Senha inicial: 1234. Altere ADMIN_PASSWORD no código antes de publicar.</small>
+ </div>
+
+
+ <div class="admin-dashboard" id="adminDashboard" hidden>
+  <div class="layout">
+   <aside class="sidebar">
+    <div class="brand"><div class="brand-icon">🌱🌎</div><h2>PlaNet</h2><p>Green Engagement</p></div>
+    <nav class="side-nav">
+     <a class="active" href="#adminInicio"><span>⌂</span>Início</a>
+     <a href="#adminRespostas"><span>▥</span>Respostas</a>
+     <a href="#adminGraficos"><span>◔</span>Gráficos</a>
+     <a href="#adminRelatorios"><span>▤</span>Relatórios</a>
+    </nav>
+    <div class="side-quote">🌿<br>Juntos por um<br>planeta mais verde</div>
+   </aside>
+   <main>
+    <div class="topbar"><div class="admin-user"><span>♙</span><span><b>Administrador</b><br><small>PlaNet Green Engagement</small></span></div><button type="button" id="closeAdmin" class="btn">✕ Fechar</button></div>
+    <header class="hero" id="adminInicio"><div class="sprout">🌱</div><h1><span>PlaNet</span> Green Engagement</h1><p>Conectando pessoas a atitudes sustentáveis.<br>Acompanhe seu impacto e participe da transformação ambiental.</p></header>
+    <section class="stats">
+     <article class="panel stat"><div class="circle">▣</div><strong id="totalResponses">0</strong><div class="stat-title">Respostas recebidas</div><small>🌿 Total de envios</small></article>
+     <article class="panel stat"><div class="circle blue">♙</div><strong id="totalTopics">0</strong><div class="stat-title">Assuntos diferentes</div><small>🌿 Categorias</small></article>
+     <article class="panel stat"><div class="circle yellow">▦</div><strong id="latestResponse" style="font-size:19px">—</strong><div class="stat-title">Último envio</div><small>🌿 Data mais recente</small></article>
+     <article class="panel stat"><div class="circle yellow">◐</div><strong style="font-size:18px">Mais consciência</strong><div class="stat-title">Juntos por um futuro melhor</div><small>🌿 Nosso objetivo</small></article>
+    </section>
+    <section class="charts" id="adminGraficos">
+     <article class="panel chart"><h3>📊 Respostas por assunto</h3><div id="topicChart"></div><div class="chart-note">🌿 Distribuição das respostas por assunto</div></article>
+     <article class="panel chart"><h3>◷ Respostas recentes</h3><div id="recentChart"></div><div class="chart-note">🌿 Quantidade de respostas por dia nos últimos 7 dias</div></article>
+    </section>
+    <section class="tools" id="adminRelatorios">
+     <label class="search"><span>⌕</span><input type="search" id="searchResponses" placeholder="Pesquisar por nome, assunto ou mensagem..."></label>
+     <button type="button" class="btn export" id="exportResponses">♧ Exportar CSV</button>
+     <button type="button" class="btn" id="clearResponses">♜ Apagar todas</button>
+    </section>
+    <section class="responses" id="adminResponses"></section>
+    <footer>🌱 © 2026 PlaNet Green Engagement — Consciência e Preservação</footer>
+   </main>
+  </div>
+ </div>
+</div>
+
+<footer><p>🌿 PLANETA VIVO — Informação, consciência e cuidado com a natureza.</p><p>Site educativo. Para pesquisas escolares, consulte também fontes científicas e órgãos ambientais oficiais.</p></footer>
+<a class="backtop" href="#inicio" aria-label="Voltar ao início">↑</a>
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const navLinks=document.getElementById('navLinks');
+menuBtn.addEventListener('click',()=>{const opened=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(opened));menuBtn.textContent=opened?'✕':'☰';});
+navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰';}));
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const sections=[...document.querySelectorAll('main section[id]')];
+const anchors=[...navLinks.querySelectorAll('a')];
+window.addEventListener('scroll',()=>{let current='';sections.forEach(section=>{if(window.scrollY>=section.offsetTop-150)current=section.id;});anchors.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));},{passive:true});
+
+// FORMULÁRIO: salva as respostas neste navegador usando localStorage.
+const STORAGE_KEY='planetaVivoRespostas';
+const ADMIN_PASSWORD='1234'; // Troque esta senha antes de publicar o site.
+const feedbackForm=document.getElementById('feedbackForm');
+function getResponses(){
+ try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');}
+ catch(error){return [];}
+}
+function saveResponses(items){localStorage.setItem(STORAGE_KEY,JSON.stringify(items));}
+feedbackForm.addEventListener('submit',event=>{
+ event.preventDefault();
+ const data=new FormData(feedbackForm);
+ const response={
+  id:Date.now(),
+  nome:(data.get('nome')||'').trim()||'Não informado',
+  assunto:data.get('assunto'),
+  mensagem:(data.get('mensagem')||'').trim(),
+  data:new Date().toLocaleString('pt-BR')
+ };
+ const responses=getResponses();
+ responses.unshift(response);
+ saveResponses(responses);
+ document.getElementById('formNotice').textContent='Obrigado! Sua resposta foi salva neste navegador.';
+ feedbackForm.reset();
+});
+
+// PAINEL ADMINISTRATIVO
+const adminOverlay=document.getElementById('adminOverlay');
+const adminLogin=document.getElementById('adminLogin');
+const adminDashboard=document.getElementById('adminDashboard');
+const loginNotice=document.getElementById('loginNotice');
+function openAdmin(){
+ adminOverlay.classList.add('open');
+ adminOverlay.setAttribute('aria-hidden','false');
+ adminLogin.hidden=false;adminDashboard.hidden=true;
+ document.getElementById('adminPassword').value='';
+ loginNotice.textContent='';
+}
+function closeAdmin(){
+ adminOverlay.classList.remove('open');
+ adminOverlay.setAttribute('aria-hidden','true');
+}
+document.getElementById('openAdmin').addEventListener('click',openAdmin);
+document.getElementById('cancelAdmin').addEventListener('click',closeAdmin);
+document.getElementById('closeAdmin').addEventListener('click',closeAdmin);
+document.getElementById('loginAdmin').addEventListener('click',()=>{
+ if(document.getElementById('adminPassword').value===ADMIN_PASSWORD){
+  adminLogin.hidden=true;adminDashboard.hidden=false;renderResponses();
+ }else{loginNotice.textContent='Senha incorreta. Tente novamente.';}
+});
+document.getElementById('adminPassword').addEventListener('keydown',event=>{
+ if(event.key==='Enter')document.getElementById('loginAdmin').click();
+});
+adminOverlay.addEventListener('click',event=>{if(event.target===adminOverlay)closeAdmin();});
+
+
+function renderCharts(items){
+ const topicHost=document.getElementById('topicChart');
+ const recentHost=document.getElementById('recentChart');
+ topicHost.replaceChildren();recentHost.replaceChildren();
+
+ function addEmpty(host,text){
+  const p=document.createElement('p');p.className='muted';p.textContent=text;host.appendChild(p);
+ }
+ function addBars(host,entries,maxValue){
+  entries.forEach(([label,value])=>{
+   const row=document.createElement('div');row.className='bar-row';
+   const name=document.createElement('span');name.className='bar-label';name.textContent=label;name.title=label;
+   const track=document.createElement('div');track.className='track';
+   const fill=document.createElement('div');fill.className='fill';
+   fill.style.width=(value/maxValue*100)+'%';track.appendChild(fill);
+   const number=document.createElement('strong');number.className='chart-number';number.textContent=value;
+   row.append(name,track,number);host.appendChild(row);
+  });
+ }
+ if(!items.length){
+  addEmpty(topicHost,'Envie uma sugestão pelo formulário para começar a gerar o gráfico.');
+  addEmpty(recentHost,'Os envios aparecerão aqui depois que houver respostas.');
+  return;
+ }
+ const topics={};
+ items.forEach(item=>{topics[item.assunto]=(topics[item.assunto]||0)+1;});
+ const topicEntries=Object.entries(topics).sort((a,b)=>b[1]-a[1]);
+ addBars(topicHost,topicEntries,Math.max(...topicEntries.map(entry=>entry[1])));
+
+ const counts={};
+ const today=new Date();today.setHours(0,0,0,0);
+ const days=[];
+ for(let offset=6;offset>=0;offset--){
+  const day=new Date(today);day.setDate(today.getDate()-offset);
+  const key=[day.getFullYear(),String(day.getMonth()+1).padStart(2,'0'),String(day.getDate()).padStart(2,'0')].join('-');
+  const label=day.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit'});
+  days.push([key,label]);
+  counts[key]=0;
+ }
+ items.forEach(item=>{
+  const parsed=new Date(item.id);
+  if(!Number.isNaN(parsed.getTime())){
+   const key=[parsed.getFullYear(),String(parsed.getMonth()+1).padStart(2,'0'),String(parsed.getDate()).padStart(2,'0')].join('-');
+   if(Object.prototype.hasOwnProperty.call(counts,key))counts[key]++;
+  }
+ });
+ const recentEntries=days.map(([key,label])=>[label,counts[key]]);
+ addBars(recentHost,recentEntries,Math.max(1,...recentEntries.map(entry=>entry[1])));
+}
+
+function renderResponses(){
+ const all=getResponses();
+ const query=document.getElementById('searchResponses').value.trim().toLowerCase();
+ const filtered=all.filter(item=>[item.nome,item.assunto,item.mensagem].join(' ').toLowerCase().includes(query));
+ document.getElementById('totalResponses').textContent=all.length;
+ document.getElementById('totalTopics').textContent=new Set(all.map(item=>item.assunto)).size;
+ document.getElementById('latestResponse').textContent=all.length?all[0].data.split(' ')[0]:'—';
+ renderCharts(all);
+ const list=document.getElementById('adminResponses');
+ list.replaceChildren();
+ if(!filtered.length){
+  const empty=document.createElement('p');empty.className='empty';
+  empty.textContent=all.length?'Nenhuma resposta encontrada para essa pesquisa.':'Ainda não há respostas cadastradas.';
+  list.appendChild(empty);return;
+ }
+ filtered.forEach(item=>{
+  const card=document.createElement('article');card.className='panel response';
+  const avatar=document.createElement('div');avatar.className='avatar';avatar.textContent='🌿';
+  const content=document.createElement('div');
+  const title=document.createElement('h3');title.textContent=item.nome;
+  const topic=document.createElement('p');topic.textContent='Assunto: '+item.assunto;
+  const message=document.createElement('p');message.textContent=item.mensagem;
+  const date=document.createElement('small');date.textContent='Enviado em: '+item.data;
+  const actions=document.createElement('div');actions.className='response-actions';
+  const del=document.createElement('button');del.type='button';del.className='delete';del.textContent='Excluir resposta';
+  del.addEventListener('click',()=>{
+   if(confirm('Deseja excluir esta resposta?')){
+    saveResponses(getResponses().filter(response=>response.id!==item.id));renderResponses();
+   }
+  });
+  del.className='delete-one';actions.appendChild(del);content.append(title,topic,message,date);card.append(avatar,content,actions);list.appendChild(card);
+ });
+}
+document.getElementById('searchResponses').addEventListener('input',renderResponses);
+document.querySelectorAll('.admin-dashboard .side-nav a').forEach(link=>link.addEventListener('click',()=>{document.querySelectorAll('.admin-dashboard .side-nav a').forEach(a=>a.classList.remove('active'));link.classList.add('active');}));
+document.getElementById('clearResponses').addEventListener('click',()=>{
+ if(confirm('Tem certeza de que deseja apagar todas as respostas? Esta ação não pode ser desfeita.')){
+  saveResponses([]);renderResponses();
+ }
+});
+document.getElementById('exportResponses').addEventListener('click',()=>{
+ const rows=getResponses();
+ if(!rows.length){alert('Não há respostas para exportar.');return;}
+ const quote=value=>'"'+String(value??'').replace(/"/g,'""')+'"';
+ const csv=['Nome,Assunto,Mensagem,Data',...rows.map(item=>[item.nome,item.assunto,item.mensagem,item.data].map(quote).join(','))].join('\\r\\n');
+ const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});
+ const url=URL.createObjectURL(blob);const link=document.createElement('a');
+ link.href=url;link.download='respostas-planeta-vivo.csv';link.click();URL.revokeObjectURL(url);
+});
+
+</script>
+</body>
+</html>
